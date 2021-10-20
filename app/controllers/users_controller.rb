@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     password_confirmation: params[:user][:password_confirmation])
     if @user.valid? #validatesを実行してくれる
       #TODO:成功したことを
+      flash[:notice] = '追加しました'
       @user.pass = BCrypt::Password.create(params[:user][:password])
       @user.save
       redirect_to users_path
